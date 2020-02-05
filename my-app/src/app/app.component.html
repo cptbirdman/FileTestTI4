@@ -1,0 +1,21 @@
+<h2>My Objectives</h2>
+<ul>
+  <li *ngFor="let objective of objectives">
+    <span>{{objective.id}}</span> {{objective.name}} {{objective.condition}} {{objective.points}} {{objective.stage}} {{objective.phase}}
+</ul>
+
+<h2>Chosen Objectives</h2>
+<ul>
+  <li *ngFor="let objective of chosenObjectives">
+    <span>{{objective.id}}</span> {{objective.name}} {{objective.condition}} {{objective.points}} {{objective.stage}} {{objective.phase}}
+</ul>
+
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button class="clear"
+          (click)="messageService.clear()">clear</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>
+<button (click)="this.chooseObjectives()">Set Objectives</button>
