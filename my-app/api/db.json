@@ -324,52 +324,56 @@
   "setobjectives": [
     {
       "id": 0,
-      "objectiveid": 1
+      "objectiveid": 2,
+      "isvisible": true
     },
     {
       "id": 1,
-      "objectiveid": 8
+      "objectiveid": 9,
+      "isvisible": true
     },
     {
       "id": 2,
-      "objectiveid": 6
+      "objectiveid": 0,
+      "isvisible": false
     },
     {
       "id": 3,
-      "objectiveid": 7
+      "objectiveid": 1,
+      "isvisible": false
     },
     {
       "id": 4,
-      "objectiveid": 0
+      "objectiveid": 8,
+      "isvisible": false
     },
     {
       "id": 5,
-      "objectiveid": 12
+      "objectiveid": 11,
+      "isvisible": false
     },
     {
       "id": 6,
-      "objectiveid": 11
+      "objectiveid": 16,
+      "isvisible": false
     },
     {
       "id": 7,
-      "objectiveid": 10
+      "objectiveid": 12,
+      "isvisible": false
     },
     {
       "id": 8,
-      "objectiveid": 13
+      "objectiveid": 17,
+      "isvisible": false
     },
     {
       "id": 9,
-      "objectiveid": 17
+      "objectiveid": 10,
+      "isvisible": false
     }
   ],
-  "claimedobjectives": [
-    {
-      "id": 1,
-      "color": "green",
-      "objectiveid": 1
-    }
-  ],
+  "claimedobjectives": [],
   "playerscore": [
     {
       "id": 0,
@@ -379,7 +383,7 @@
     {
       "id": 1,
       "color": "green",
-      "score": 2
+      "score": 0
     },
     {
       "id": 2,

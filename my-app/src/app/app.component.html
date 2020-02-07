@@ -11,8 +11,8 @@
 </h3>
 <h2>Stage One Objectives</h2>
 <ul>
-  <li *ngFor="let objective of chosenObjectivesStgOne">
-    <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points
+  <li *ngFor="let objective of stgonevisibleobj">
+    <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points | <b>{{this.getIsVisible(objective.id)}}</b>
 	<br />
 	<button (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
 	<button (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>
@@ -23,8 +23,8 @@
 </ul>
 <h2>Stage Two Objectives</h2>
 <ul>
-  <li *ngFor="let objective of chosenObjectivesStgTwo">
-    <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points
+  <li *ngFor="let objective of stgtwovisibleobj">
+    <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points | <b>{{this.getIsVisible(objective.id)}}</b>
 	<br />
 	<button (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
 	<button (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>
@@ -43,4 +43,8 @@
   <div *ngFor='let message of messageService.messages'> {{message}} </div>
 
 </div>
-<button (click)="this.chooseObjectives()">New Game</button>
+<table>
+<tr>
+<td><button (click)="this.chooseObjectives()">New Game</button></td><td><button (click)="this.revealObjective()">Reveal Objective</button></td>
+</tr>
+</table>

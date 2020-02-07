@@ -101,7 +101,8 @@ export class ObjectiveService {
 	  {
 		  var thisobj: SetObjective = {
 			id: i,
-			objectiveid: setobjectives[i].id
+			objectiveid: setobjectives[i].id,
+			isvisible: false
 		  };
 		  this.http.put(`${this.setObjectivesURL}/${i}`, thisobj, httpOptions).pipe(
 			tap( (newobj: SetObjective) => this.log(`updated objective id=${newobj.id} oid=${newobj.objectiveid}`)),
@@ -115,6 +116,18 @@ export class ObjectiveService {
 		  return this.http.put(`${this.playerScoreURL}/${playerscore.id}`, playerscore, httpOptions).pipe(
 			tap( (newobj: PlayerScore) => this.log(`updated playerscore id=${newobj.id} oid=${newobj.score}`)),
 			catchError(this.handleError<any>('updatePlayerScore')));
+	}
+	
+	/** PUT: update the setobjective visible objective on the server */
+	setRevealedObj (rid: number, oid: number, isv: boolean): Observable<SetObjective> {
+		  var thisobj: SetObjective = {
+			id: rid,
+			objectiveid: oid,
+			isvisible: isv
+		  };
+		  return this.http.put(`${this.setObjectivesURL}/${rid}`, thisobj, httpOptions).pipe(
+			tap( (newobj: SetObjective) => this.log(`updated objective id=${newobj.id} oid=${newobj.objectiveid}`)),
+			catchError(this.handleError<any>('updateVisibleObjective')));
 	}
 
 	/** post: add the claimed objective on the server */
