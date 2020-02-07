@@ -22,6 +22,9 @@ export class AppComponent {
 	private scoresSubscription: AnonymousSubscription;
 	private claimedSubscription: AnonymousSubscription;
 	debug = false;
+	visibleobj: Objective[] = [];
+	stgonevisibleobj: Objective[] = [];
+	stgtwovisibleobj: Objective[] = [];
 	scores: PlayerScore[] = [];
 	claimed: ClaimedObjective[] = [];
 	objectives: Objective[] = [];
@@ -179,6 +182,26 @@ export class AppComponent {
 		this.refreshClaims();
 	}
 	
+	revealObjective()
+	{
+		if( confirm("Are you sure you want to reveal the next objective?") )
+		{
+			var nextobj = this.visibleobj.length;
+			if( nextobj < 5 )
+			{
+				this.visibleobj.push( this.chosenObjectivesStgOne[nextobj] );
+				this.stgonevisibleobj.push( this.chosenObjectivesStgOne[nextobj] );
+				this.objectiveService.setRevealedObj(nextobj, this.chosenObjectivesStgOne[nextobj].id, true ).subscribe();
+			}
+			else if( nextobj < 10 )
+			{
+				this.visibleobj.push( this.chosenObjectivesStgTwo[nextobj-5] );
+				this.stgtwovisibleobj.push( this.chosenObjectivesStgTwo[nextobj-5] );
+				this.objectiveService.setRevealedObj(nextobj, this.chosenObjectivesStgTwo[nextobj-5].id, true ).subscribe();
+			}
+		}
+	}
+	
 	getObjectives(): void {
 		this.objectiveService.getObjectives()
 			.subscribe(objectives => this.objectives = objectives);
@@ -191,18 +214,49 @@ export class AppComponent {
 		this.refreshScores();
 	}
 	
+	getIsVisible( id: number ) : boolean
+	{
+		var check = false;
+		for( var i=0;i<this.visibleobj.length;i++ )
+		{
+			check = check || this.visibleobj[i].id == id;
+		}
+		return check;
+	}
+	
 	processSetObjectives( setobjectives: SetObjective[] ) {
+		/*for( var i=0;i<setobjectives.length;i++ )
+		{
+		this.log( `id=${setobjectives[i].id} oid=${setobjectives[i].objectiveid} visible=${setobjectives[i].isvisible}` );
+		}*/
 		this.chosenObjectivesStgOne = [];
 		this.chosenObjectivesStgTwo = [];
+		this.visibleobj = [];
+		this.stgonevisibleobj = [];
+		this.stgtwovisibleobj = [];
 		for( var i=0;i<setobjectives.length;i++ )
 		{
+			var isvisibleobj = setobjectives[i].isvisible;
 			if( i < 5 )
 			{
 				this.chosenObjectivesStgOne.push( this.objectives[setobjectives[i].objectiveid] );
+				if( isvisibleobj )
+				{
+					this.stgonevisibleobj.push( this.objectives[setobjectives[i].objectiveid] );
+				}
 			}
 			else
 			{
 				this.chosenObjectivesStgTwo.push( this.objectives[setobjectives[i].objectiveid] );
+				if( isvisibleobj )
+				{
+					this.stgtwovisibleobj.push( this.objectives[setobjectives[i].objectiveid] );
+				}
+			}
+			
+			if( setobjectives[i].isvisible )
+			{
+				this.visibleobj.push( this.objectives[setobjectives[i].objectiveid] );
 			}
 		}
 	}
@@ -245,6 +299,9 @@ export class AppComponent {
 		}
 		
 		this.claimed = [];
+		this.visibleobj = [];
+		this.stgtwovisibleobj = [];
+		this.stgonevisibleobj = [];
 	}
 
 	chooseObjectives(): void {
