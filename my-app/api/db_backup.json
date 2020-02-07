@@ -324,7 +324,7 @@
   "setobjectives": [
     {
       "id": 0,
-      "objectiveid": 1
+      "objectiveid": 6
     },
     {
       "id": 1,
@@ -332,11 +332,11 @@
     },
     {
       "id": 2,
-      "objectiveid": 6
+      "objectiveid": 1
     },
     {
       "id": 3,
-      "objectiveid": 7
+      "objectiveid": 9
     },
     {
       "id": 4,
@@ -348,11 +348,11 @@
     },
     {
       "id": 6,
-      "objectiveid": 11
+      "objectiveid": 18
     },
     {
       "id": 7,
-      "objectiveid": 10
+      "objectiveid": 15
     },
     {
       "id": 8,
@@ -361,39 +361,6 @@
     {
       "id": 9,
       "objectiveid": 17
-    }
-  ],
-  "claimedobjectives": [],
-  "playerscore": [
-    {
-      "id": 0,
-      "color": "red",
-      "score": 0
-    },
-    {
-      "id": 1,
-      "color": "green",
-      "score": 0
-    },
-    {
-      "id": 2,
-      "color": "black",
-      "score": 0
-    },
-    {
-      "id": 3,
-      "color": "purple",
-      "score": 0
-    },
-    {
-      "id": 4,
-      "color": "blue",
-      "score": 0
-    },
-    {
-      "id": 5,
-      "color": "yellow",
-      "score": 0
     }
   ]
 }
