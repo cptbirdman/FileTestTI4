@@ -363,7 +363,13 @@
       "objectiveid": 17
     }
   ],
-  "claimedobjectives": [],
+  "claimedobjectives": [
+    {
+      "id": 1,
+      "color": "green",
+      "objectiveid": 1
+    }
+  ],
   "playerscore": [
     {
       "id": 0,
@@ -373,7 +379,7 @@
     {
       "id": 1,
       "color": "green",
-      "score": 0
+      "score": 2
     },
     {
       "id": 2,

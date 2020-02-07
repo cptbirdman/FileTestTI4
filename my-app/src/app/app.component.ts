@@ -7,6 +7,7 @@ import { MessageService } from './message.service';
 import { SetObjective } from './setobjective'
 import { ClaimedObjective } from './claimedobjective'
 import { PlayerScore } from './playerscore'
+import {AnonymousSubscription} from "rxjs/Subscription";
 ​
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ export class AppComponent {
 		this.messageService.add(`MainApp: ${message}`);
 	}
 
+	private scoresSubscription: AnonymousSubscription;
+	private claimedSubscription: AnonymousSubscription;
 	debug = false;
 	scores: PlayerScore[] = [];
 	claimed: ClaimedObjective[] = [];
@@ -173,8 +176,7 @@ export class AppComponent {
 	getClaimedObjectives()
 	{
 		this.claimed = [];
-		this.objectiveService.getClaimedObjectives()
-			.subscribe(objectives => this.claimed = objectives);
+		this.refreshClaims();
 	}
 	
 	getObjectives(): void {
@@ -186,8 +188,7 @@ export class AppComponent {
 	
 		this.getClaimedObjectives();
 		
-		this.objectiveService.getPlayerScores()
-			.subscribe(playerscores => this.scores = playerscores);
+		this.refreshScores();
 	}
 	
 	processSetObjectives( setobjectives: SetObjective[] ) {
@@ -275,10 +276,38 @@ export class AppComponent {
 		//this.objectiveService.addSetObjective(this.chosenobjectives[0]).subscribe();
 			//.subscribe();		
 	}
+	
+	private refreshScores(): void {
+		this.scoresSubscription = this.objectiveService.getPlayerScores().subscribe(scoresub => {
+			this.scores = scoresub;
+			this.subscribeToScores();
+			});
+	}
+	
+	private subscribeToScores(): void {
+		this.scoresSubscription = Observable.timer(2000).first().subscribe(() => this.refreshScores());
+	}
+
+	private refreshClaims(): void {
+		this.claimedSubscription = this.objectiveService.getClaimedObjectives().subscribe(claimsub => {
+			this.claimed = claimsub;
+			this.subscribeToClaims();
+			});
+	}
+	
+	private subscribeToClaims(): void {
+		this.claimedSubscription = Observable.timer(2000).first().subscribe(() => this.refreshClaims());
+	}
 	​
 	constructor(private http: HttpClient, private objectiveService: ObjectiveService, public messageService: MessageService) {}
 
 	ngOnInit() {
 		this.getObjectives();
+	}
+	
+	ngOnDestroy()
+	{
+		this.scoresSubscription.unsubscribe();
+		this.claimedSubscription.unsubscribe();
 	}
 }
