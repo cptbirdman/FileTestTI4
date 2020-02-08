@@ -324,52 +324,52 @@
   "setobjectives": [
     {
       "id": 0,
-      "objectiveid": 2,
+      "objectiveid": 4,
       "isvisible": true
     },
     {
       "id": 1,
-      "objectiveid": 9,
+      "objectiveid": 7,
       "isvisible": true
     },
     {
       "id": 2,
-      "objectiveid": 0,
+      "objectiveid": 3,
       "isvisible": false
     },
     {
       "id": 3,
-      "objectiveid": 1,
+      "objectiveid": 9,
       "isvisible": false
     },
     {
       "id": 4,
-      "objectiveid": 8,
+      "objectiveid": 1,
       "isvisible": false
     },
     {
       "id": 5,
-      "objectiveid": 11,
+      "objectiveid": 15,
       "isvisible": false
     },
     {
       "id": 6,
-      "objectiveid": 16,
+      "objectiveid": 13,
       "isvisible": false
     },
     {
       "id": 7,
-      "objectiveid": 12,
+      "objectiveid": 10,
       "isvisible": false
     },
     {
       "id": 8,
-      "objectiveid": 17,
+      "objectiveid": 11,
       "isvisible": false
     },
     {
       "id": 9,
-      "objectiveid": 10,
+      "objectiveid": 16,
       "isvisible": false
     }
   ],
@@ -378,32 +378,38 @@
     {
       "id": 0,
       "color": "red",
-      "score": 0
+      "score": 0,
+      "playing": true
     },
     {
       "id": 1,
       "color": "green",
-      "score": 0
+      "score": 0,
+      "playing": true
     },
     {
       "id": 2,
       "color": "black",
-      "score": 0
+      "score": 0,
+      "playing": true
     },
     {
       "id": 3,
       "color": "purple",
-      "score": 0
+      "score": 0,
+      "playing": true
     },
     {
       "id": 4,
       "color": "blue",
-      "score": 0
+      "score": 0,
+      "playing": false
     },
     {
       "id": 5,
       "color": "yellow",
-      "score": 0
+      "score": 0,
+      "playing": false
     }
   ]
 }
