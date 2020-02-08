@@ -378,32 +378,38 @@
     {
       "id": 0,
       "color": "red",
-      "score": 0
+      "score": 0,
+	  "playing": true
     },
     {
       "id": 1,
       "color": "green",
-      "score": 0
+      "score": 0,
+	  "playing": true
     },
     {
       "id": 2,
       "color": "black",
-      "score": 0
+      "score": 0,
+	  "playing": true
     },
     {
       "id": 3,
       "color": "purple",
-      "score": 0
+      "score": 0,
+	  "playing": true
     },
     {
       "id": 4,
       "color": "blue",
-      "score": 0
+      "score": 0,
+	  "playing": true
     },
     {
       "id": 5,
       "color": "yellow",
-      "score": 0
+      "score": 0,
+	  "playing": true
     }
   ]
 }

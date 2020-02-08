@@ -114,7 +114,7 @@ export class ObjectiveService {
 	setPlayerScore (playerscore: PlayerScore): Observable<PlayerScore> {
 	  //this.log( `now sending id=${setobjective.id} oid=${setobjective.objectiveid}` );
 		  return this.http.put(`${this.playerScoreURL}/${playerscore.id}`, playerscore, httpOptions).pipe(
-			tap( (newobj: PlayerScore) => this.log(`updated playerscore id=${newobj.id} oid=${newobj.score}`)),
+			tap( (newobj: PlayerScore) => this.log(`updated playerscore id=${newobj.id} oid=${newobj.score} playing=${newobj.playing}`)),
 			catchError(this.handleError<any>('updatePlayerScore')));
 	}
 	

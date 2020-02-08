@@ -22,6 +22,7 @@ export class AppComponent {
 	private scoresSubscription: AnonymousSubscription;
 	private claimedSubscription: AnonymousSubscription;
 	debug = false;
+	nrplaying = 6;
 	visibleobj: Objective[] = [];
 	stgonevisibleobj: Objective[] = [];
 	stgtwovisibleobj: Objective[] = [];
@@ -71,6 +72,31 @@ export class AppComponent {
 		return pos;
 	}
 	
+	getIsPlaying(color: number) : boolean {
+		switch(color)
+		{
+			case 0:
+			return true;
+			break;
+			case 1: 
+			return true;
+			break;
+			case 2: 
+			return this.nrplaying >= 3;
+			break;
+			case 3: 
+			return this.nrplaying >= 4;
+			break;
+			case 4: 
+			return this.nrplaying >= 5;
+			break;
+			case 5: 
+			return this.nrplaying >= 6;
+			break;
+			default:
+		}
+	}
+	
 	getUniqueClaimed() : number
 	{
 		var max = 0;
@@ -92,6 +118,17 @@ export class AppComponent {
 			{
 				return this.scores[i];
 			}
+		}
+	}
+	
+	setNrPlaying( nr: number )
+	{
+		this.nrplaying = nr;
+		for( var i=0;i<this.scores.length;i++ )
+		{
+			var playerplaying = this.getIsPlaying( i );
+			this.scores[i].playing = playerplaying;
+			this.objectiveService.setPlayerScore( this.scores[i] ).subscribe();
 		}
 	}
 	

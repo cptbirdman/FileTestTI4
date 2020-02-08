@@ -14,24 +14,24 @@
   <li *ngFor="let objective of stgonevisibleobj">
     <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points | <b>{{this.getIsVisible(objective.id)}}</b>
 	<br />
-	<button (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
-	<button (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>
-	<button (click)="this.claimobjective('black',objective.id)" [class.blackselected]="getIsClaimed('black',objective.id,0)" [class.black]="!getIsClaimed('black',objective.id,0)" class="button black">Black</button>
-	<button (click)="this.claimobjective('purple',objective.id)" [class.purpleselected]="getIsClaimed('purple',objective.id,0)" [class.purple]="!getIsClaimed('purple',objective.id,0)" class="button purple">Purple</button>
-	<button (click)="this.claimobjective('blue',objective.id)" [class.blueselected]="getIsClaimed('blue',objective.id,0)" [class.blue]="!getIsClaimed('blue',objective.id,0)" class="button blue">Blue</button>
-	<button (click)="this.claimobjective('yellow',objective.id)" [class.yellowselected]="getIsClaimed('yellow',objective.id,0)" [class.yellow]="!getIsClaimed('yellow',objective.id,0)" class="button yellow">Yellow</button>
+	<button *ngIf="this.getIsPlaying(0)" (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
+	<button *ngIf="this.getIsPlaying(1)" (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>
+	<button *ngIf="this.getIsPlaying(2)" (click)="this.claimobjective('black',objective.id)" [class.blackselected]="getIsClaimed('black',objective.id,0)" [class.black]="!getIsClaimed('black',objective.id,0)" class="button black">Black</button>
+	<button *ngIf="this.getIsPlaying(3)" (click)="this.claimobjective('purple',objective.id)" [class.purpleselected]="getIsClaimed('purple',objective.id,0)" [class.purple]="!getIsClaimed('purple',objective.id,0)" class="button purple">Purple</button>
+	<button *ngIf="this.getIsPlaying(4)" (click)="this.claimobjective('blue',objective.id)" [class.blueselected]="getIsClaimed('blue',objective.id,0)" [class.blue]="!getIsClaimed('blue',objective.id,0)" class="button blue">Blue</button>
+	<button *ngIf="this.getIsPlaying(5)" (click)="this.claimobjective('yellow',objective.id)" [class.yellowselected]="getIsClaimed('yellow',objective.id,0)" [class.yellow]="!getIsClaimed('yellow',objective.id,0)" class="button yellow">Yellow</button>
 </ul>
 <h2>Stage Two Objectives</h2>
 <ul>
   <li *ngFor="let objective of stgtwovisibleobj">
     <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points | <b>{{this.getIsVisible(objective.id)}}</b>
 	<br />
-	<button (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
-	<button (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>
-	<button (click)="this.claimobjective('black',objective.id)" [class.blackselected]="getIsClaimed('black',objective.id,0)" [class.black]="!getIsClaimed('black',objective.id,0)" class="button black">Black</button>
-	<button (click)="this.claimobjective('purple',objective.id)" [class.purpleselected]="getIsClaimed('purple',objective.id,0)" [class.purple]="!getIsClaimed('purple',objective.id,0)" class="button purple">Purple</button>
-	<button (click)="this.claimobjective('blue',objective.id)" [class.blueselected]="getIsClaimed('blue',objective.id,0)" [class.blue]="!getIsClaimed('blue',objective.id,0)" class="button blue">Blue</button>
-	<button (click)="this.claimobjective('yellow',objective.id)" [class.yellowselected]="getIsClaimed('yellow',objective.id,0)" [class.yellow]="!getIsClaimed('yellow',objective.id,0)" class="button yellow">Yellow</button>
+	<button *ngIf="this.getIsPlaying(0)" (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
+	<button *ngIf="this.getIsPlaying(1)" (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>
+	<button *ngIf="this.getIsPlaying(2)" (click)="this.claimobjective('black',objective.id)" [class.blackselected]="getIsClaimed('black',objective.id,0)" [class.black]="!getIsClaimed('black',objective.id,0)" class="button black">Black</button>
+	<button *ngIf="this.getIsPlaying(3)" (click)="this.claimobjective('purple',objective.id)" [class.purpleselected]="getIsClaimed('purple',objective.id,0)" [class.purple]="!getIsClaimed('purple',objective.id,0)" class="button purple">Purple</button>
+	<button *ngIf="this.getIsPlaying(4)" (click)="this.claimobjective('blue',objective.id)" [class.blueselected]="getIsClaimed('blue',objective.id,0)" [class.blue]="!getIsClaimed('blue',objective.id,0)" class="button blue">Blue</button>
+	<button *ngIf="this.getIsPlaying(5)" (click)="this.claimobjective('yellow',objective.id)" [class.yellowselected]="getIsClaimed('yellow',objective.id,0)" [class.yellow]="!getIsClaimed('yellow',objective.id,0)" class="button yellow">Yellow</button>
 </ul>
 
 
