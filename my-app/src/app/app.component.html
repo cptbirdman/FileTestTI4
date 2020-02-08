@@ -2,9 +2,11 @@
 <table>
 	<tr>
 		<td *ngFor="let score of scores">
+		<div *ngIf="this.getIsPlaying(score.id)">
 		<b [className]="score.color">{{score.color.charAt(0)}}:{{score.score}}</b>
 		<br />
 		<button (click)="claimobjectivescore(score,true)">^</button><button (click)="claimobjectivescore(score,false)">v</button>
+		</div>
 		</td>
 	</tr>
 </table>
@@ -12,7 +14,7 @@
 <h2>Stage One Objectives</h2>
 <ul>
   <li *ngFor="let objective of stgonevisibleobj">
-    <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points | <b>{{this.getIsVisible(objective.id)}}</b>
+    <span><b>{{objective.name}}</b></span> | <i>{{objective.condition}}</i> | <b>{{objective.points}}</b> points
 	<br />
 	<button *ngIf="this.getIsPlaying(0)" (click)="this.claimobjective('red',objective.id)" [class.redselected]="getIsClaimed('red',objective.id,0)" [class.red]="!getIsClaimed('red',objective.id,0)" class="button red">Red</button>
 	<button *ngIf="this.getIsPlaying(1)" (click)="this.claimobjective('green',objective.id)" [class.greenselected]="getIsClaimed('green',objective.id,0)" [class.green]="!getIsClaimed('green',objective.id,0)" class="button green">Green</button>

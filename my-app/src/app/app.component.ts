@@ -121,7 +121,7 @@ export class AppComponent {
 		}
 	}
 	
-	setNrPlaying( nr: number )
+	setNrPlaying( nr: number ) : void
 	{
 		this.nrplaying = nr;
 		for( var i=0;i<this.scores.length;i++ )
@@ -321,12 +321,12 @@ export class AppComponent {
 		this.objectivesStgTwo.splice(i,1);
 	}
 	
-	zeroScore()
+	zeroScore(setnrplay: number)
 	{
 		for( var i=0;i<this.scores.length;i++ )
 		{
 			this.scores[i].score = 0;
-			this.objectiveService.setPlayerScore( this.scores[i] ).subscribe();
+			this.objectiveService.setPlayerScore( this.scores[i] ).subscribe(_=> this.setNrPlaying(setnrplay) );
 		}
 		
 		for( var a=0;a<this.claimed.length;a++ )
@@ -360,7 +360,8 @@ export class AppComponent {
 			}
 			
 			this.setObjectives();
-			this.zeroScore();
+			var nrplay = prompt("Enter number of players", "6");
+			this.zeroScore(parseInt(nrplay));
 		}
 	}
 	
@@ -374,6 +375,14 @@ export class AppComponent {
 	private refreshScores(): void {
 		this.scoresSubscription = this.objectiveService.getPlayerScores().subscribe(scoresub => {
 			this.scores = scoresub;
+			this.nrplaying = 0;
+			for( var i=0;i<this.scores.length;i++ )
+			{
+				if( this.scores[i].playing )
+				{
+					this.nrplaying++;
+				}
+			}
 			this.subscribeToScores();
 			});
 	}
